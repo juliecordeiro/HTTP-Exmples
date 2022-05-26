@@ -6,35 +6,32 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Path;
 import java.time.Duration;
 
-public class getRequest {
+public class postRequest {
 
-
-    // public static  final String URL_GET = "https://jsonplaceholder.typicode.com/posts";
-    public static  final String URL_GET = "http://httpbin.org/get";
+    public static  final String URL_GET = "http://httpbin.org/forms/post";
+    public static  final String FILE_JSON = "C:/Users/julie.santos/Documents/Projetos/DIO/HTTPProject/pedido.json" ;
 
     public static void main(String[] args) throws IOException, InterruptedIOException, InterruptedException {
 
-        // cliente
+        // client HTTP
         HttpClient client = HttpClient.newHttpClient();
+
+
 
         // requisição
         HttpRequest request = HttpRequest.newBuilder()
-                .GET()
+               // .POST( HttpRequest.BodyPublishers.ofFile( Path.of( FILE_JSON ) ) )
                 .timeout( Duration.ofSeconds( 10 ) )
                 .uri( URI.create( URL_GET ) )
                 .build();
 
-        // Enviar Solicitação
-
-         HttpResponse<String> response = client.send ( request, HttpResponse.BodyHandlers.ofString() );
-
-         //Imprimir Conteudo
-        System.out.println(response.statusCode());
-        System.out.println(response.body());
-
-
+        client.sendAsync( request, HttpResponse.BodyHandlers.ofString() )
+                .thenApply( HttpResponse::body )
+                .thenAccept( System.out::println )
+                .join();
 
     }
 
