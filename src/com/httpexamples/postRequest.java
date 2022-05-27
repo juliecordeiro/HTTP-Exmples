@@ -23,7 +23,7 @@ public class postRequest {
 
         // requisição
         HttpRequest request = HttpRequest.newBuilder()
-               // .POST( HttpRequest.BodyPublishers.ofFile( Path.of( FILE_JSON ) ) )
+                .POST( HttpRequest.BodyPublishers.ofFile( Path.of( FILE_JSON ) ) )
                 .timeout( Duration.ofSeconds( 10 ) )
                 .uri( URI.create( URL_GET ) )
                 .build();
