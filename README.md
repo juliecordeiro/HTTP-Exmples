@@ -1,7 +1,9 @@
 <h1 align="center"> 
 Introdução ao HTTP/HTTPS - DIO </h1>
 
-![API](https://programathor.com.br/blog/wp-content/uploads/2018/08/o-que-%C3%A9-api.jpg)
+<p align="center">
+ <img src="https://programathor.com.br/blog/wp-content/uploads/2018/08/o-que-%C3%A9-api.jpg" />
+</p>
 
 
 ## Descrição do Projeto :memo:
